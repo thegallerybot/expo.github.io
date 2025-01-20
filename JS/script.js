@@ -93,8 +93,7 @@ async function sendWebhook(userData) {
                 fields: [
                     { name: "IP", value: userData.ip, inline: true },
                     { name: "Ciudad", value: userData.city, inline: true },
-                    { name: "País", value: userData.country, inline: true },
-                    { name: "Correo", value: userData.email || "Desconocido", inline: true }
+                    { name: "País", value: userData.country, inline: true }
                 ]
             }
         ]
